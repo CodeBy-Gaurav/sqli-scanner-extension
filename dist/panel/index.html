@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SQLi Scanner Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div class="header">
+            <h1>SQLi Scanner</h1>
+            <div class="mode-toggle">
+                <label>
+                    <input type="checkbox" id="safeMode" checked>
+                    Safe Mode (Non-destructive)
+                </label>
+            </div>
+        </div>
+        
+        <div class="main-container">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Discovered Forms</h3>
+                    <div id="formsList" class="forms-list"></div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Recent Requests</h3>
+                    <div id="requestsList" class="requests-list"></div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <button id="discoverBtn" class="action-btn">Discover Inputs</button>
+                    <button id="highlightBtn" class="action-btn">Toggle Highlights</button>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="scan-config">
+                    <h3>Scan Configuration</h3>
+                    <div class="technique-toggles">
+                        <label><input type="checkbox" id="errorBased" checked> Error-based</label>
+                        <label><input type="checkbox" id="booleanBased" checked> Boolean-based Blind</label>
+                        <label><input type="checkbox" id="timeBased"> Time-based Blind</label>
+                        <label><input type="checkbox" id="unionBased" checked> Union-based</label>
+                    </div>
+                    
+                    <div class="advanced-settings">
+                        <details>
+                            <summary>Advanced Settings</summary>
+                            <div class="settings-grid">
+                                <label>Retry Count: <input type="number" id="retryCount" value="3" min="1" max="10"></label>
+                                <label>Timing Threshold (ms): <input type="number" id="timingThreshold" value="2000" min="500" max="10000"></label>
+                                <label>Current Origin Only: <input type="checkbox" id="currentOriginOnly"></label>
+                            </div>
+                        </details>
+                    </div>
+                    
+                    <div class="scan-controls">
+                        <button id="runScanBtn" class="primary-btn">Run Scan</button>
+                        <button id="stopScanBtn" class="secondary-btn" disabled>Stop Scan</button>
+                    </div>
+                </div>
+                
+                <div class="scan-results">
+                    <div class="results-header">
+                        <h3>Scan Results</h3>
+                        <div class="export-controls">
+                            <button id="exportJsonBtn" class="export-btn">Export JSON</button>
+                            <button id="exportMdBtn" class="export-btn">Export Markdown</button>
+                        </div>
+                    </div>
+                    
+                    <div id="scanLog" class="scan-log"></div>
+                    
+                    <div class="findings-table-container">
+                        <table id="findingsTable" class="findings-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Location</th>
+                                    <th>Technique</th>
+                                    <th>Evidence</th>
+                                    <th>Confidence</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="documentation">
+                    <details>
+                        <summary>Documentation & Remediation</summary>
+                        <div id="docContent" class="doc-content">
+                            <h4>SQL Injection Testing Techniques</h4>
+                            <p>This scanner implements OWASP WSTG-compliant testing methodologies for comprehensive SQL injection detection.</p>
+                            
+                            <h5>Error-based Detection</h5>
+                            <p>Injects malformed SQL syntax to trigger database errors, revealing information about the underlying database structure.</p>
+                            
+                            <h5>Boolean-based Blind</h5>
+                            <p>Uses true/false conditions to infer information based on application response differences.</p>
+                            
+                            <h5>Time-based Blind</h5>
+                            <p>Introduces controlled delays to detect injection points when other methods fail.</p>
+                            
+                            <h5>Union-based</h5>
+                            <p>Attempts to determine column counts and structure for potential data extraction.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalBody"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>

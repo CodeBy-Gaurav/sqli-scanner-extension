@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "SQLi Scanner",
+  "version": "1.0.0",
+  "description": "Production-grade SQL injection vulnerability scanner for DevTools",
+  "permissions": [
+    "storage",
+    "scripting",
+    "downloads",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/sw.js"
+  },
+  "devtools_page": "devtools/devtools.html",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "minimum_chrome_version": "88"
+}
