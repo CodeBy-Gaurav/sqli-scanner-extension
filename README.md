@@ -12,19 +12,20 @@ Production-grade Chrome Extension for detecting SQL injection vulnerabilities.
 
 1. Clone this repository:
 git clone https://github.com/YOUR-USERNAME/sqli-scanner-extension.git
+
 cd sqli-scanner-extension
 
-text
+
 
 2. Install dependencies:
 npm install
 
-text
+
 
 3. Build the extension:
 npm run build
 
-text
+
 
 4. Load in Chrome:
    - Open `chrome://extensions/`
