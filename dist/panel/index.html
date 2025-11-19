@@ -113,11 +113,133 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Detailed Finding Modal -->
+    <div id="findingModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🔍 Vulnerability Details</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Progress Section -->
+                <div class="detail-section">
+                    <h3>Scan Progress</h3>
+                    <div class="progress-info">
+                        <span class="progress-label">Completion</span>
+                        <span class="progress-value" id="modalProgress">0%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="modalProgressBar">
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card stat-critical">
+                        <div class="stat-icon">🚨</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Confidence</div>
+                            <div class="stat-value" id="modalConfidence">--</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card stat-warning">
+                        <div class="stat-icon">🔧</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Technique</div>
+                            <div class="stat-value" id="modalTechnique">--</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card stat-info">
+                        <div class="stat-icon">📍</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Location</div>
+                            <div class="stat-value" id="modalLocation">--</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card stat-success">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Timestamp</div>
+                            <div class="stat-value" id="modalTimestamp">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Findings Chart -->
+                <div class="detail-section">
+                    <h3>Detection Techniques Success Rates</h3>
+                    <div class="chart-container">
+                        <canvas id="techniquesChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Detailed Information -->
+                <div class="detail-section">
+                    <h3>📋 Parameter Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Parameter:</span>
+                            <span class="info-value" id="modalParameter">--</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Method:</span>
+                            <span class="info-value" id="modalMethod">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evidence Section -->
+                <div class="detail-section">
+                    <h3>🔍 Evidence</h3>
+                    <div class="evidence-box">
+                        <pre id="modalEvidence">No evidence available</pre>
+                    </div>
+                </div>
+
+                <!-- Payload Section -->
+                <div class="detail-section">
+                    <h3>💉 Payload Used</h3>
+                    <div class="payload-box">
+                        <code id="modalPayload">No payload information</code>
+                    </div>
+                </div>
+
+                <!-- Remediation Section -->
+<div class="detail-section">
+    <h3>🛡️ Remediation</h3>
+    <div class="remediation-box">
+        <h4 id="remediationTitle">Recommended Fix:</h4>
+        <p id="remediationDescription">Use parameterized queries to prevent SQL injection attacks.</p>
         
-        <div id="modal" class="modal hidden">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div id="modalBody"></div>
+        <div class="code-example">
+            <strong id="remediationLanguage">Example Fix:</strong>
+            <pre><code id="remediationCode">// Code will be generated dynamically</code></pre>
+        </div>
+        
+        <div style="margin-top: 15px; padding: 12px; background: rgba(255, 107, 107, 0.1); border-left: 3px solid #ff6b6b; border-radius: 4px;">
+            <strong style="color: #ff6b6b;">⚠️ Why This Works:</strong>
+            <p id="remediationExplanation" style="margin: 8px 0 0 0; color: #c0c0c0; font-size: 13px;">
+                Explanation will appear here
+            </p>
+        </div>
+    </div>
+</div>
+
+
+                <!-- Action Buttons -->
+                <div class="modal-actions">
+                    <button class="btn-export" id="exportFindingBtn">📄 Export Finding</button>
+                    <button class="btn-copy" id="copyEvidenceBtn">📋 Copy Evidence</button>
+                    <button class="btn-close" id="closeModalBtn">✖️ Close</button>
+                </div>
             </div>
         </div>
     </div>
